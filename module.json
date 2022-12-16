@@ -1,7 +1,7 @@
 {
   "id": "mat-action-library",
   "title": "MAT Action Library",
-  "description": "",
+  "description": "A collection of additional actions for Monk's Active Tiles",
   "version": "This is auto replaced",
   "library": "false",
   "manifestPlusVersion": "1.2.0",
@@ -14,13 +14,14 @@
     {
       "name": "XLilCasper",
       "url": "https://github.com/xlilcasper/mat-action-library",
-      "discord": "discordID#0001"
+      "discord": "XLilCasper#9701"
     }
   ],
-  "relationships": {
-    "systems": [],
-    "requires": []
-  },
+  "dependencies": [
+    {
+      "name": "monks-active-tiles", "type": "module"
+    }
+  ],
   "esmodules": [
     "scripts/module.js"
   ],
@@ -45,7 +46,7 @@
   "media": [
     {
       "type": "icon",
-      "url": "https://avatars2.githubusercontent.com/u/71292812?s=400&u=ccdb4eeb7abf551ca8f314e5a9bfd0479a4d3d41&v=4"
+      "url": "https://raw.githubusercontent.com/xlilcasper/mat-action-library/master/open-book-icon.svg"
     }
   ]
 }
