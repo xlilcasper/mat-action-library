@@ -2,7 +2,7 @@
   "id": "mat-action-library",
   "title": "MAT Action Library",
   "description": "A collection of additional actions for Monk's Active Tiles",
-  "version": "This is auto replaced",
+  "version": "0.0.1",
   "library": "false",
   "manifestPlusVersion": "1.2.0",
   "compatibility": {
