@@ -1,6 +1,6 @@
 {
-  "id": "module",
-  "title": "New Module",
+  "id": "mat-action-library",
+  "title": "MAT Action Library",
   "description": "",
   "version": "This is auto replaced",
   "library": "false",
@@ -12,8 +12,8 @@
   },
   "authors": [
     {
-      "name": "The League of Extraordinary FVTT Developers",
-      "url": "https://github.com/League-of-Foundry-Developers",
+      "name": "XLilCasper",
+      "url": "https://github.com/xlilcasper/mat-action-library",
       "discord": "discordID#0001"
     }
   ],

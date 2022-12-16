@@ -1,0 +1,6 @@
+Initial release
+    Added console.log action for debugging
+    Added Tile Center distance
+    Added Find By Tag that can find all placeables with a given tag on the scene
+    Added a reset autolanding. If you choose the reset action it will trigger the selected tile and jump to _reset if the landing exists.
+

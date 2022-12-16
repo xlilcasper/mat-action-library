@@ -1,3 +1,8 @@
 {
-    "MODULE.hello": "hello"
+    "MATAL.reset": "reset",
+    "MATAL.Console_Log": "Console Log",
+    "MATAL.Filter_Tile_Center_Distance": "Filter Tile Center Distance",
+    "MATAL.filter_has_tag": "Has Tag",
+    "MATAL.tag": "tag",
+    "MATAL.find_tag": "Find by tags"
 }
