@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/Foundry-v10.0.0-informational)
+![](https://img.shields.io/badge/Foundry-v10.0.0-informational)(https://img.shields.io/github/downloads/xlilcasper/mat-action-library/0.0.1/module.zip)
 <!--- Downloads @ Latest Badge -->
 <!--- replace <user>/<repo> with your username/repository -->
 <!--- ![Latest Release Download Count](https://img.shields.io/github/downloads/xlilcasper/mat-action-library/latest/module.zip) -->
