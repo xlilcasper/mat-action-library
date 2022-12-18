@@ -12,7 +12,7 @@ export class MATALActionManager {
         if (game.modules.get('tagger')?.active) {
             MATALTaggerActions.RegisterAutoLanding()
         }
-        if (game.modules.get('laser-and-mirrors')?.active) {
+        if (game.modules.get('lasers')?.active) {
             MATALLaserAndMirrosActions.RegisterAutoLanding();
         }
     }
