@@ -35,6 +35,10 @@ export class MATAL {
     };
   };
   static log_level = MATAL.log_levels.DEBUG;
+  static auto_landings = {}
+  static RegisterAutolanding(method, landing) {
+    this.auto_landings[method] = landing;
+  }
 }
 Hooks.once('init', async function() {
   console.log(" .----------------. .----------------. .----------------. .----------------. .----------------. ");
@@ -57,16 +61,18 @@ Hooks.once('ready', async function() {
 Hooks.on("setupTileActions", (app) => {
   log("Wrap our trigger modes");
   let originaltriggerModes = Reflect.get(MonksActiveTiles, 'triggerModes');
+
+
   Object.defineProperty(MonksActiveTiles, "triggerModes", {
     get: function() {
       let out = {}
       for (let key in originaltriggerModes) {
         out[key] = i18n(originaltriggerModes[key]);
       }
-      out["reset"] = i18n("MATAL.reset");
+      out = mergeObject(out, MATAL.auto_landings)
       return out;
     }
   });
+  MATALActionManager.RegisterAutoLanding();
   MATALActionManager.RegisterActions(app)
-
 });

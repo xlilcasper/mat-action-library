@@ -1,4 +1,7 @@
-Initial release
+0.0.2
+    Add in support for Lasers and Mirrors module. Now when a laser sensor triggers a tile it will jump to the _laser_sensor landing if one exists
+
+Initial release 0.0.1
     Added console.log action for debugging
     Added Tile Center distance
     Added Find By Tag that can find all placeables with a given tag on the scene

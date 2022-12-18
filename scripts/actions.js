@@ -1,7 +1,21 @@
+import {MATAL} from "./module.js";
 import { MonksActiveTiles, i18n }  from '../../monks-active-tiles/monks-active-tiles.js';
 import { MATALTaggerActions } from "./actions_tagger.js";
+import {MATALLaserAndMirrosActions} from "./actions_lasers_and_mirrors.js";
+import {log} from "./module.js";
+
 
 export class MATALActionManager {
+    static RegisterAutoLanding() {
+        log("Registering landings");
+        MATAL.RegisterAutolanding("reset", "_reset")
+        if (game.modules.get('tagger')?.active) {
+            MATALTaggerActions.RegisterAutoLanding()
+        }
+        if (game.modules.get('laser-and-mirrors')?.active) {
+            MATALLaserAndMirrosActions.RegisterAutoLanding();
+        }
+    }
     static RegisterActions (app) {
         log("Registering actions");
         app.registerTileGroup('mat-action-library', "MATAL");
@@ -117,7 +131,9 @@ export class MATALActionManager {
                     const midCheckTile = {x: t.x + hW, y: t.y + hH};
 
                     if (action.data.measure == 'lt') {
-                        return tile.pointWithin(midTile)
+                        console.log(tile)
+                        console.log(midCheckTile)
+                        return tile.pointWithin(midCheckTile)
                     }
 
                     //parse our distance to an int.
@@ -156,47 +172,22 @@ export class MATALActionManager {
                     defaultType: 'tiles',
                     placeholder: "Please select a Tile"
                 },
-                {
-                    id: "token",
-                    name: "MonksActiveTiles.ctrl.select-entity",
-                    type: "select",
-                    subtype: "entity",
-                    options: { showToken: true, showWithin: true, showPlayers: true, showPrevious: true },
-                    restrict: (entity) => { return (entity instanceof Token); }
-                },
-                {
-                    id: "return",
-                    name: "MonksActiveTiles.ctrl.returndata",
-                    type: "checkbox",
-                    defvalue: true,
-                    help: "Add the data this Tile returns to the current data"
-                }
             ],
             fn: async (args = {}) => {
                 const { tile, userid, action, method } = args;
                 let entities = await MonksActiveTiles.getEntities(args, 'tiles');
+                log(entities);
                 if (entities.length == 0)
                     return;
-
                 let tokens = await MonksActiveTiles.getEntities(args, "tokens", (action.data?.token || { id: "previous" }));
-                //if (tokens.length == 0)
-                //    return;
-
-                //if (MonksActiveTiles.triggered == undefined)
-                //    MonksActiveTiles.triggered = [];
-
                 let promises = [];
                 for (let entity of entities) {
                     if (!(entity instanceof TileDocument))
                         continue;
-                    //Add this trigger if it's the original one
-                    //MonksActiveTiles.triggered.push(tile.id);
 
                     let newargs = Object.assign({}, args, { tokens: tokens, tile: entity, method: "reset" });
                     promises.push(entity.trigger.call(entity, newargs));
 
-                    //remove this trigger as it's done
-                    //MonksActiveTiles.triggered.pop();
                 }
 
                 return Promise.all(promises).then((results) => {
@@ -217,6 +208,9 @@ export class MATALActionManager {
         });
         if (game.modules.get('tagger')?.active) {
             MATALTaggerActions.RegisterActions(app)
+        }
+        if (game.modules.get('laser-and-mirrors')?.active) {
+            MATALLaserAndMirrosActions.RegisterActions(app)
         }
     }
 }

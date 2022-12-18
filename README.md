@@ -26,3 +26,6 @@ This module adds several more actions to Monk's Active Tiles action list. This l
 ## Download
 `https://github.com/xlilcasper/mat-action-library/releases/latest/download/module.json`
 
+## Special Thanks
+Thanks Iron Monk! Your module is fantastic and exactly what I needed to ditch 15 other modules.
+- Some code in this module is shamefully copy & paste from his while I learn the code base and work out what everything does.

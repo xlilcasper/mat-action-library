@@ -1,5 +1,10 @@
+import {MATAL} from "./module.js";
 import { MonksActiveTiles }  from '../../monks-active-tiles/monks-active-tiles.js';
+import {log} from "./module.js";
 export class MATALTaggerActions {
+    static RegisterAutoLanding() {
+        log("Registering tagger landings");
+    }
     static RegisterActions(app) {
         log("Registering tagger actions");
         app.registerTileAction('mat-action-library', 'has_tag', {
@@ -98,10 +103,7 @@ export class MATALTaggerActions {
                 group: "mat-action-library",
                 fn: async (args = {}) => {
                     let {action} = args;
-                    let entities = await MonksActiveTiles.getEntities(args, action.data?.collection || "tokens");
-                    console.log(entities)
                     let result = Tagger.getByTag(action.data.tag)
-
                     console.log("Result")
                     console.log(result)
                     return {tokens: result};
